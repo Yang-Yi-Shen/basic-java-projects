@@ -31,7 +31,7 @@ public class Calculator {
             System.exit(0);
         } else if (args[0].equals("multiply")) {
             // get product of any number of arguments
-            int product = 0;
+            int product = 1;
 
             for (int i = 1; i < args.length; i++) {
                 int number = Integer.parseInt(args[i]);
