@@ -1,5 +1,11 @@
 public class Calculator {
     public static void main(String[] args) {
+        // convert numerical arguents to floats from string
+        float[] numbers = new float[args.length - 1];
+        for (int i = 1; i < args.length; i++) {
+            numbers[i - 1] = Float.parseFloat(args[i]);
+        }
+
         // ensure there are sufficient arguments
         if (args.length < 3) {
             System.out.println("ERROR: at least two numbers required for an operation");
@@ -8,15 +14,14 @@ public class Calculator {
 
         if (args[0].equals("add")) {
             // get sum of any number of arguments
-            int sum = 0;
+            float sum = 0;
 
-            for (int i = 1; i < args.length; i++) {
-                int number = Integer.parseInt(args[i]);
+            for (int i = 0; i < numbers.length; i++) {
+                float number = numbers[i];
                 sum += number;
             }
 
-            System.out.printf("The sum is: %d\n", sum);
-            System.exit(0);
+            System.out.printf("The sum is: %f\n", sum);
         } else if (args[0].equals("subtract")) {
             // you can only subtract between two numbers, so confirm number of args first
             if (args.length > 3) {
@@ -24,22 +29,20 @@ public class Calculator {
                 System.exit(1);
             }
 
-            int difference = 0;
-            difference = Integer.parseInt(args[1]) - Integer.parseInt(args[2]);
+            float difference = 0;
+            difference = numbers[0] - numbers[1];
 
-            System.out.printf("The difference is: %d\n", difference);
-            System.exit(0);
+            System.out.printf("The difference is: %f\n", difference);
         } else if (args[0].equals("multiply")) {
             // get product of any number of arguments
-            int product = 1;
+            float product = 1;
 
-            for (int i = 1; i < args.length; i++) {
-                int number = Integer.parseInt(args[i]);
+            for (int i = 0; i < numbers.length; i++) {
+                float number = numbers[i];
                 product *= number;
             }
 
-            System.out.printf("The product is: %d\n", product);
-            System.exit(0);
+            System.out.printf("The product is: %f\n", product);
         } else if (args[0].equals("divide")) {
             // you can only divide between two numbers, so confirm number of args first
             if (args.length > 3) {
@@ -48,12 +51,13 @@ public class Calculator {
             }
 
             float quotient = 0;
-            quotient = Float.parseFloat(args[1]) / Float.parseFloat(args[2]);
+            quotient = numbers[0] - numbers[1];
 
             System.out.printf("The quotient is: %f\n", quotient);
-            System.exit(0);
         } else {
             System.out.println("ERROR: invalid operator, supported operators are ADD SUBTRACT MULTIPLY and DIVIDE");
         }
+
+        System.exit(0);
     }
 }
