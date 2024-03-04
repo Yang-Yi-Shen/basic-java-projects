@@ -1,15 +1,15 @@
 public class Calculator {
     public static void main(String[] args) {
-        // convert numerical arguents to floats from string
-        float[] numbers = new float[args.length - 1];
-        for (int i = 1; i < args.length; i++) {
-            numbers[i - 1] = Float.parseFloat(args[i]);
-        }
-
         // ensure there are sufficient arguments
         if (args.length < 3) {
             System.out.println("ERROR: at least two numbers required for an operation");
             System.exit(1);
+        }
+
+        // convert numerical arguents to floats from string
+        float[] numbers = new float[args.length - 1];
+        for (int i = 1; i < args.length; i++) {
+            numbers[i - 1] = Float.parseFloat(args[i]);
         }
 
         if (args[0].equals("add")) {
